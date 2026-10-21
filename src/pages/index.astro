@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const services = [
+  { number: '01', title: 'Website design & development', text: 'Clear, modern websites built around your business goals and the people you serve.' },
+  { number: '02', title: 'Website refreshes', text: 'Improve an outdated site with a cleaner design, better mobile experience, and clearer calls to action.' },
+  { number: '03', title: 'Ongoing care', text: 'Keep your site current with planned updates, content changes, performance checks, and practical support.' },
+];
+---
+<BaseLayout description="Custom websites, thoughtful redesigns, and ongoing website support for small businesses.">
+  <section class="hero section-pad">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> Web design & development</p>
+        <h1>A better website.<br /><span>A stronger business.</span></h1>
+        <p class="hero-lede">I help businesses turn their online presence into a useful tool—through thoughtful design, reliable development, and ongoing support.</p>
+        <div class="button-row">
+          <a class="button" href="/contact/">Let's talk about your site <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="/services/">Explore services <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-note"><span class="note-line"></span><span>Built for real people, real businesses, and real goals.</span></div>
+      </div>
+      <div class="hero-art" aria-label="Abstract website layout illustration" role="img">
+        <div class="art-glow"></div>
+        <div class="browser-card">
+          <div class="browser-top"><span></span><span></span><span></span><div>yourbusiness.com</div></div>
+          <div class="browser-content">
+            <div class="mock-nav"><b>YOUR BRAND</b><span></span><span></span><span></span></div>
+            <div class="mock-kicker">MADE TO MOVE YOU FORWARD</div>
+            <div class="mock-title"></div><div class="mock-title short"></div>
+            <div class="mock-copy"></div><div class="mock-copy narrow"></div>
+            <div class="mock-button"></div>
+            <div class="mock-stats"><div><b>01</b><span>Clear strategy</span></div><div><b>02</b><span>Thoughtful design</span></div></div>
+          </div>
+        </div>
+        <div class="floating-tag tag-top"><span class="tag-icon">✳</span><span><b>Made with purpose</b><small>Strategy meets design</small></span></div>
+        <div class="floating-tag tag-bottom"><span class="tag-check">✓</span><span><b>Ready for what's next</b><small>Built to grow with you</small></span></div>
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip"><div class="container trust-inner"><span>DESIGNED AROUND YOUR BUSINESS</span><span>FAST & MOBILE-FRIENDLY</span><span>SUPPORT THAT MAKES SENSE</span></div></section>
+
+  <section class="section-pad services-preview">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">What I can help with</p><h2>Good websites do<br />more than look good.</h2></div><p class="section-intro">Your website should make it easier for the right people to understand what you do, trust your business, and take the next step.</p></div>
+      <div class="service-grid">
+        {services.map((service) => <article class="service-card"><span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><a class="arrow-link" href="/services/" aria-label={`Learn about ${service.title}`}>Learn more <span aria-hidden="true">↗</span></a></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="approach-section section-pad"><div class="container approach-grid"><div><p class="eyebrow">A straightforward process</p><h2>Less tech stress.<br /><span>More forward motion.</span></h2><p class="section-intro">Whether you're starting from scratch or improving what you already have, the process stays collaborative, transparent, and focused on what your business needs.</p><a class="button button-light" href="/contact/">Tell me what you're building <span aria-hidden="true">↗</span></a></div><div class="steps-list"><article><span>01</span><div><h3>Understand</h3><p>We define your goals, audience, priorities, and budget.</p></div></article><article><span>02</span><div><h3>Build</h3><p>We shape the design and develop a site that fits your needs.</p></div></article><article><span>03</span><div><h3>Support</h3><p>Launch confidently, with a clear plan for what happens next.</p></div></article></div></div></section>
+
+  <section class="cta-section section-pad"><div class="container cta-card"><div><p class="eyebrow">Have a project in mind?</p><h2>Let's make your website<br />work harder for you.</h2></div><a class="button" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a><div class="cta-decoration" aria-hidden="true">R.</div></div></section>
+</BaseLayout>

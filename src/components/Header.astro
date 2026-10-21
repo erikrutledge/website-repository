@@ -1,0 +1,27 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/services/', label: 'Services' },
+  { href: '/portfolio/', label: 'Portfolio' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Rutledge Digital home">
+      <span class="brand-mark" aria-hidden="true">R<span>.</span></span>
+      <span>Rutledge <strong>Digital</strong></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+      {links.map((link) => (
+        <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>
+      ))}
+      <a class="button button-small nav-cta" href="/contact/">Start a project <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
