@@ -1,73 +1,49 @@
 // Portfolio content is kept in one place so you can add/edit projects without changing the page layout.
+// Projects without a public URL intentionally omit `href`; the card will show no external link.
 export const projects = [
   {
     number: "01",
-    title: "The Hat Haus",
-    category: "Shopify · E-commerce",
-    description: "Custom Shopify product-building experience for personalized trucker hats, including draggable patches, filters, and a custom design flow.",
-    href: "https://www.hathausco.com/products/custom-hat"
+    title: "Happy Klips",
+    category: "Shopify · Product customization",
+    description: "Worked with Guenter to help carry his graphic-design passion into retirement by moving his print shop from Wix to Shopify. Built custom inventory logic and tagging so customers can start with a product—hats, bags, shirts, sweaters, hoodies, and vinyl stickers—or start with one of Guenter’s designs and see which products it can be printed on, including designs uploaded by customers.",
   },
   {
     number: "02",
-    title: "Blaque Diamond",
-    category: "WordPress · Interactive UI",
-    description: "A landing page for C8 Corvette wheels, implemented in WordPress/Elementor with interactive wheel and finish selection elements.",
-    href: "https://blaquediamond.com/c8-corvette-wheels/"
+    title: "Aniron Wellness",
+    category: "WordPress · Website refresh",
+    description: "Partnered with Wendy to refresh her WordPress website and add new certifications and services. She had a clear vision for the design and content, so the focus was translating that vision into a polished website that reflected her direction.",
   },
   {
     number: "03",
-    title: "Greta's Guns",
-    category: "WordPress · Data integration",
-    description: "Website maintenance and troubleshooting, including product-image recovery and automated inventory synchronization for a large catalog.",
-    href: "https://gretasguns.com/"
+    title: "CrossroadsSales",
+    category: "Shopify · Catalog and discovery",
+    description: "Built a Shopify storefront for a local convenience-store distributor serving gas stations. Imported inventory from JSON and organized products with tags, allowing customers to browse by product name, brand catalogs, or categories such as beef jerky and protein bars.",
   },
   {
     number: "04",
-    title: "HubSpot Integrations",
-    category: "APIs · Automation",
-    description: "Custom HubSpot workflows and a scheduled, bidirectional integration with PracticePanther to synchronize service data between platforms.",
-    href: "https://www.hubspot.com/"
+    title: "The Hat Haus",
+    category: "Shopify · E-commerce · POS",
+    description: "Built a custom Shopify hat-personalization experience with drag-and-drop patch placement, letting customers create their own hat designs. Also helped improve point-of-sale workflows so ordering and payments at pop-up markets could be handled more smoothly and quickly.",
+    href: "https://www.hathausco.com/products/custom-hat"
   },
   {
     number: "05",
-    title: "Aid EHD",
-    category: "Swift · iOS concept",
-    description: "A task focus and reminder app concept with adjustable task duration and reminder intervals.",
-    href: "https://github.com/erikrutledge/AidEHD"
+    title: "Blaque Diamond",
+    category: "WordPress · Interactive UI",
+    description: "Utilized figma designs to build landing pages for aftermarket supercar wheels in WordPress/Elementor, including interactive wheel and finish selection elements.",
+    href: "https://blaquediamond.com/c8-corvette-wheels/"
   },
   {
     number: "06",
-    title: "Pokulation",
-    category: "Python · Simulation",
-    description: "A Pokémon-type collision simulation with a draggable playfield, player-controlled setup, and interactive game mechanics.",
-    href: "https://github.com/erikrutledge/Pokulation-Game"
+    title: "Greta's Guns",
+    category: "WordPress · Data integration",
+    description: "Provided website maintenance and troubleshooting, including product-image recovery and automated inventory synchronization for a large catalog of firearm accessories.",
+    href: "https://gretasguns.com/"
   },
   {
     number: "07",
-    title: "Dr. Mario Clone",
-    category: "Python · Pygame",
-    description: "A playable NES Dr. Mario-inspired game built with Python and Pygame.",
-    href: "https://github.com/erikrutledge/drmario"
-  },
-  {
-    number: "08",
-    title: "Terminal Greed",
-    category: "C++ · Console game",
-    description: "A two-player strategy game built around risk, bluffing, and deciding when to take or leave a shared pot.",
-    href: "https://github.com/erikrutledge/Cpp_Game"
-  },
-  {
-    number: "09",
-    title: "RESTful API Experiments",
-    category: "JavaScript · APIs",
-    description: "An interactive Pokémon API project exploring data retrieval and dynamic UI updates based on user input.",
-    href: "https://github.com/erikrutledge/erikrutledge.github.io"
-  },
-  {
-    number: "10",
-    title: "Personal Portfolio",
-    category: "HTML · CSS · JavaScript",
-    description: "A hand-built portfolio with reusable project data, project detail pages, responsive styling, and a draggable horizontal project track.",
-    href: "https://github.com/erikrutledge/erikrutledge.github.io"
+    title: "Pearagon — HubSpot / PracticePanther Integration",
+    category: "Internship · APIs · Integration",
+    description: "During an internship at Pearagon, a local HubSpot agency, built an integration between HubSpot and PracticePanther legal software to synchronize information between the platforms.",
   }
 ];
