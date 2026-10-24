@@ -27,25 +27,104 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
     </div>
-    <form class="contact-form" action="mailto:erikrutledge.com" method="post" enctype="text/plain">
+    <form class="contact-form" action="/api/contact" method="POST" id="contact-form">
       <label for="name">Your name</label>
-      <input id="name" name="Name" autocomplete="name" required />
+      <input id="name" name="Name" autocomplete="name" maxlength="120" required />
       <label for="email">Email address</label>
-      <input id="email" name="Email" type="email" autocomplete="email" required />
-      <label for="business">Business or website (optional)</label>
-      <input id="business" name="Business or website" autocomplete="url" />
-      <label for="project">What do you need help with?</label>
-      <select id="project" name="Project type">
-        <option>New website</option>
-        <option>Redesign</option>
-        <option>Maintenance and updates</option>
-        <option>E-commerce</option>
-        <option>Not sure yet</option>
+      <input id="email" name="Email" type="email" autocomplete="email" maxlength="254" required />
+      <label for="company">Business or website (optional)</label>
+      <input id="company" name="copmpany" autocomplete="url" maxlength="160" />
+      <label for="service">What do you need help with?</label>
+      <select id="service" name="service">
+        <option value="New Website">New website</option>
+        <option value="Redesign">Redesign</option>
+        <option value="Maintain and Update">Maintenance and updates</option>
+        <option value="E-Commerce">E-commerce</option>
+        <option value="Other">Not sure yet</option>
       </select>
       <label for="message">Tell me about your project</label>
       <textarea id="message" name="Message" rows="5" required></textarea>
+
+      <!-- Honeypot field: keep this hidden from real visitors. -->
+      <div class="form-honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Replace this placeholder with your actual Turnstile site key. -->
+      <div
+        class="cf-turnstile"
+        data-sitekey="YOUR_TURNSTILE_SITE_KEY"
+      ></div>
+
+      <p id="form-status" role="status" aria-live="polite"></p>
+
+      <button class="button" type="submit">Send message</button>
+
       <button class="button button-primary" type="submit">Prepare email <span aria-hidden="true">↗</span></button>
-      <p class="form-fineprint">This starter uses an email-client handoff, not a secure form-processing service. Don't collect sensitive information here.</p>
     </form>
+
+    <script
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+
+    <script>
+      const form = document.querySelector<HTMLFormElement>("#contact-form");
+      const status = document.querySelector<HTMLElement>("#form-status");
+      const submitButton = form?.querySelector<HTMLButtonElement>(
+        'button[type="submit"]'
+      );
+
+      form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!form || !status || !submitButton) return;
+
+        status.textContent = "Sending your message…";
+        submitButton.disabled = true;
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            body: new FormData(form),
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || !result.success) {
+            throw new Error(
+              result.error || "We couldn't send your message. Please try again."
+            );
+          }
+
+          status.textContent =
+            result.message || "Thanks! Your message has been sent.";
+
+          form.reset();
+
+          // Clear the Turnstile widget so it can generate a fresh token.
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+        } catch (error) {
+          status.textContent =
+            error instanceof Error
+              ? error.message
+              : "Something went wrong. Please try again.";
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
+
   </section>
 </BaseLayout>

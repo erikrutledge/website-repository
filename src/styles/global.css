@@ -679,6 +679,14 @@ button {
   justify-self: start;
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-fineprint {
   font-size: 12px;
   color: var(--muted);
