@@ -177,9 +177,11 @@ button {
   align-items: center;
   gap: 14px;
   padding: 14px 17px;
+  border: 0;
   border-radius: 6px;
   font-size: 12px;
   font-weight: 750;
+  cursor: pointer;
   transition: transform 0.2s, background 0.2s;
 }
 
@@ -271,8 +273,7 @@ button {
   color: var(--text);
 }
 
-.art-symbol span,
-.aside-symbol span {
+.art-symbol span {
   color: var(--accent);
 }
 
@@ -400,7 +401,7 @@ button {
 .project-card p,
 .note-panel p,
 .service-row p,
-.contact-card p {
+.contact-detail p {
   font-size: 13px;
   line-height: 1.8;
   color: var(--muted);
@@ -535,8 +536,7 @@ button {
   max-width: 720px;
 }
 
-.service-row ul,
-.contact-aside ul {
+.service-row ul {
   padding-left: 18px;
   color: var(--muted);
   font-size: 12px;
@@ -591,117 +591,100 @@ button {
 
 /* Contact page */
 
-.contact-layout {
+.contact-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
   padding-bottom: 100px;
 }
-/* 
-.contact-card,
-.contact-aside {
+
+.contact-copy h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+  margin: 0 0 16px;
+}
+
+.contact-copy > p {
+  max-width: 540px;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-detail {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-top: 22px;
+}
+
+.contact-symbol {
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.contact-detail b {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.contact-detail p {
+  margin: 6px 0 0;
+}
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  padding: 34px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 34px;
   background: var(--panel);
 }
 
-.contact-card h2 {
-  font-size: 30px;
-  letter-spacing: -0.05em;
-  margin: 0;
+.contact-form label {
+  font-size: 13px;
+  font-weight: 750;
 }
 
-.contact-card p {
-  max-width: 540px;
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
 }
 
-.contact-card .button {
-  margin-top: 10px;
+.contact-form textarea {
+  resize: vertical;
 }
 
-.fine-print {
-  font-size: 10px !important;
-  color: #77796f !important;
-  margin-top: 20px;
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.contact-aside {
-  background: radial-gradient(ellipse at top right, #2c3420, #191a17 70%);
+.contact-form .button {
+  margin-top: 8px;
+  justify-self: start;
 }
 
-.aside-symbol {
-  font-size: 75px;
-  font-weight: 850;
-  letter-spacing: -0.1em;
+.form-fineprint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 4px 0 0;
 }
-
-.contact-aside h3 {
-  margin: 25px 0 8px;
-}
-
-.contact-aside ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-.contact-aside li:before {
-  content: "↗";
-  color: var(--accent);
-  margin-right: 10px;
-} */
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-    padding-bottom: 100px;
-  }
-  
-  .contact-form {
-    display: grid;
-    gap: 12px;
-    padding: 34px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--panel);
-  }
-  
-  .contact-form label {
-    font-size: 14px;
-    font-weight: 600;
-  }
-  
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--background);
-    color: var(--text);
-    font: inherit;
-    box-sizing: border-box;
-  }
-  
-  .contact-form textarea {
-    resize: vertical;
-  }
-  
-  .contact-form input:focus,
-  .contact-form select:focus,
-  .contact-form textarea:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  
-  .form-fineprint {
-    font-size: 12px;
-    color: #999;
-    line-height: 1.5;
-  }
 
 @media (max-width: 800px) {
   .hero {
@@ -729,7 +712,7 @@ button {
     margin-bottom: 8px;
   }
 
-  .contact-layout {
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
@@ -849,9 +832,7 @@ button {
     font-size: 21px;
   }
 
-  .note-panel,
-  .contact-card,
-  .contact-aside {
+  .note-panel {
     padding: 24px;
   }
 
