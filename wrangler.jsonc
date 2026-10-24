@@ -7,7 +7,7 @@
       "global_fetch_strictly_public"
     ],
     "vars": {
-      "CONTACT-FROM-EMAIL": "website@send.erikrutledge.com",
+      "CONTACT-FROM-EMAIL": "erikrutledge.com",
       "CONTACT-TO-EMAIL": "erik.rutledge14@gmail.com"
     },
     "assets": {
