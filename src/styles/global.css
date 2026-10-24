@@ -597,7 +597,7 @@ button {
   gap: 18px;
   padding-bottom: 100px;
 }
-
+/* 
 .contact-card,
 .contact-aside {
   border: 1px solid var(--line);
@@ -649,7 +649,59 @@ button {
   content: "↗";
   color: var(--accent);
   margin-right: 10px;
-}
+} */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    padding-bottom: 100px;
+  }
+  
+  .contact-form {
+    display: grid;
+    gap: 12px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+  }
+  
+  .contact-form label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font: inherit;
+    box-sizing: border-box;
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+  }
+  
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  
+  .form-fineprint {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.5;
+  }
 
 @media (max-width: 800px) {
   .hero {
@@ -808,7 +860,12 @@ button {
     flex-direction: column;
   }
 
-  .contact-layout {
-    padding-bottom: 70px;
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-form {
+    padding: 24px;
   }
 }
