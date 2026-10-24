@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects.js";
+---
+<BaseLayout title="Portfolio | Rutledge Digital" description="Selected website development, e-commerce, integration, and software projects by Erik Rutledge.">
+  <section class="page-hero section-wrap"><p class="eyebrow">PORTFOLIO / SELECTED PROJECTS</p><h1>Different challenges.<br /><span class="accent">Practical solutions.</span></h1><p class="hero-lede">A selection of website, e-commerce, integration, and software projects—from custom product experiences to solving tricky data problems.</p></section>
+  <section class="section-wrap section-block portfolio-intro"><p>My work spans custom HTML/CSS/JavaScript, WordPress, Shopify, APIs, and application development. The common thread is understanding how a system works and finding a useful way to improve it.</p><a class="text-link" href="https://github.com/erikrutledge" target="_blank" rel="noreferrer">More code on GitHub ↗</a></section>
+  <section class="section-wrap portfolio-grid">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </section>
+  <section class="section-wrap note-panel"><p class="eyebrow">WORK IN PROGRESS</p><h2>More case studies coming.</h2><p>Project descriptions and links are based on the existing portfolio. Add approved screenshots and expand each case study as you prepare the business site for launch.</p><a class="button button-primary" href="/contact/">Start a conversation ↗</a></section>
+</BaseLayout>
