@@ -59,7 +59,7 @@ export async function POST({ request, locals }) {
     );
   }
 
-  if (!env.TURNSTILE_SECRET_KEY || !turnstileToken) {
+  if (!env.TURNSTILE-SECRET-KEY || !turnstileToken) {
     return json(
       {
         error:
@@ -79,7 +79,7 @@ export async function POST({ request, locals }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          secret: env.TURNSTILE_SECRET_KEY,
+          secret: env.TURNSTILE-SECRET-KEY,
           response: turnstileToken,
           remoteip:
             request.headers.get("CF-Connecting-IP") || undefined,
@@ -106,9 +106,9 @@ export async function POST({ request, locals }) {
   }
 
   if (
-    !env.RESEND_API_KEY ||
-    !env.CONTACT_TO_EMAIL ||
-    !env.CONTACT_FROM_EMAIL
+    !env.RESEND-API-KEY ||
+    !env.CONTACT-TO-EMAIL ||
+    !env.CONTACT-FROM-EMAIL
   ) {
     return json(
       { error: "The contact form is not configured yet." },
@@ -136,12 +136,12 @@ export async function POST({ request, locals }) {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${env.RESEND-API-KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: `Rutledge Digital Website <${env.CONTACT_FROM_EMAIL}>`,
-        to: [env.CONTACT_TO_EMAIL],
+        from: `Rutledge Digital Website <${env.CONTACT-FROM-EMAIL}>`,
+        to: [env.CONTACT-TO-EMAIL],
         reply_to: email,
         subject,
         text,

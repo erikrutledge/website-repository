@@ -6,6 +6,10 @@
       "nodejs_compat",
       "global_fetch_strictly_public"
     ],
+    "vars": {
+      "CONTACT-FROM-EMAIL": "website@send.erikrutledge.com",
+      "CONTACT-TO-EMAIL": "erik.rutledge14@gmail.com"
+    },
     "assets": {
       "binding": "ASSETS",
       "directory": "./dist"
