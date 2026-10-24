@@ -1,10 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Contact | Rutledge Digital" description="Get in touch with Rutledge Digital about a website, e-commerce, integration, or maintenance project.">
-  <section class="page-hero section-wrap"><p class="eyebrow">CONTACT</p><h1>Tell me what you're<br /><span class="accent">trying to make possible.</span></h1><p class="hero-lede">A few details about your business and the problem you're solving are a great place to start.</p></section>
-  <section class="section-wrap contact-layout">
-    <div class="contact-card"><p class="eyebrow">LET'S TALK</p><h2>Have a project in mind?</h2><p>Email is the simplest way to get started. Share what you're looking to build or improve, any timeline you're working toward, and how you'd like the site to help your business.</p><a class="button button-primary" href="mailto:erikrutledge.com?subject=Rutledge%20Digital%20project%20inquiry">Email about a project ↗</a></div>
-    <div class="contact-aside"><span class="aside-symbol">R<span>.</span></span><h3>Useful details to include</h3><ul><li>What your business does</li><li>What you need the website to accomplish</li><li>Whether you have an existing site</li><li>Your rough budget and timeline</li></ul></div>
-  </section>
+<BaseLayout title="Contact | Rutledge Digital" description="Start a conversation about your website project with Rutledge Digital.">
+  <section class="page-hero section-pad"><div class="container narrow"><p class="eyebrow">Contact</p><h1>Let's talk about<br /><span>what comes next.</span></h1><p class="hero-lede">Tell me a little about your business and what you'd like your website to do. I'll follow up to discuss goals, options, and next steps.</p></div></section>
+  <section class="section-pad page-content"><div class="container contact-grid"><div class="contact-copy"><p class="eyebrow">Start a conversation</p><h2>Good projects start<br />with a clear brief.</h2><p>Share as much or as little as you know right now. You don't need a finished plan to get started.</p><div class="contact-detail"><span class="contact-symbol">↗</span><div><b>Email</b><p>Replace this with your business email before launch.</p></div></div><div class="contact-detail"><span class="contact-symbol">◎</span><div><b>What happens next?</b><p>We'll talk through your goals, timing, budget, and what a sensible first step looks like.</p></div></div></div>
+    <form class="contact-form" action="mailto:erikrutledge.com" method="post" enctype="text/plain">
+      <label for="name">Your name</label><input id="name" name="Name" autocomplete="name" required />
+      <label for="email">Email address</label><input id="email" name="Email" type="email" autocomplete="email" required />
+      <label for="business">Business or website (optional)</label><input id="business" name="Business or website" autocomplete="url" />
+      <label for="project">What do you need help with?</label><select id="project" name="Project type"><option>New website</option><option>Redesign</option><option>Maintenance and updates</option><option>E-commerce</option><option>Not sure yet</option></select>
+      <label for="message">Tell me about your project</label><textarea id="message" name="Message" rows="5" required></textarea>
+      <button class="button" type="submit">Prepare email <span aria-hidden="true">↗</span></button>
+      <p class="form-fineprint">This starter uses an email-client handoff, not a secure form-processing service. Don't collect sensitive information here.</p>
+    </form>
+  </div></section>
 </BaseLayout>
