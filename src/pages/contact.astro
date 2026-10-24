@@ -29,11 +29,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <form class="contact-form" action="/api/contact" method="POST" id="contact-form">
       <label for="name">Your name</label>
-      <input id="name" name="Name" autocomplete="name" maxlength="120" required />
+      <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required />
       <label for="email">Email address</label>
-      <input id="email" name="Email" type="email" autocomplete="email" maxlength="254" required />
+      <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required />
       <label for="company">Business or website (optional)</label>
-      <input id="company" name="copmpany" autocomplete="url" maxlength="160" />
+      <input id="company" name="company" type="text" autocomplete="url" maxlength="160" />
       <label for="service">What do you need help with?</label>
       <select id="service" name="service">
         <option value="New Website">New website</option>
@@ -43,7 +43,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <option value="Other">Not sure yet</option>
       </select>
       <label for="message">Tell me about your project</label>
-      <textarea id="message" name="Message" rows="5" required></textarea>
+      <textarea id="message" name="message" rows="5" maxlength="1500" required></textarea>
 
       <!-- Honeypot field: keep this hidden from real visitors. -->
       <div class="form-honeypot" aria-hidden="true">
@@ -95,13 +95,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             body: new FormData(form),
           });
 
-          const result = await response.json();
+        const contentType = response.headers.get("content-type") || "";
 
-          if (!response.ok || !result.success) {
-            throw new Error(
-              result.error || "We couldn't send your message. Please try again."
-            );
-          }
+        if (!contentType.includes("application/json")) {
+          const responseText = await response.text();
+
+          console.error("Contact endpoint returned non-JSON:", {
+            status: response.status,
+            url: response.url,
+            contentType,
+            responsePreview: responseText.slice(0, 300),
+          });
+
+          throw new Error(
+            `The contact server returned an unexpected response (HTTP ${response.status}). ` +
+            "The backend may not be deployed or the endpoint path may be incorrect."
+          );
+        }
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.error || "We couldn't send your message. Please try again."
+          );
+        }
 
           status.textContent =
             result.message || "Thanks! Your message has been sent.";
