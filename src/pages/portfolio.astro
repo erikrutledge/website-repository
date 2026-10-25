@@ -4,8 +4,8 @@ import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects.js";
 ---
 <BaseLayout title="Portfolio | Rutledge Digital" description="Selected website, e-commerce, and business systems projects by Erik Rutledge.">
-  <section class="page-hero section-wrap"><p class="eyebrow">PORTFOLIO / SELECTED PROJECTS</p><h1>Different challenges.<br /><span class="accent">Practical solutions.</span></h1><p class="hero-lede">A selection of practical work for real businesses, from custom e-commerce experiences to website refreshes and connected business systems.</p></section>
-  <section class="section-wrap section-block portfolio-intro"><p>My work spans Shopify, WordPress, custom product experiences, catalog organization, and integrations. The common thread is understanding how a business works and building a practical solution around its needs.</p><a class="text-link" href="https://github.com/erikrutledge" target="_blank" rel="noreferrer">More code on GitHub ↗</a></section>
+  <section class="page-hero section-wrap"><p class="eyebrow">PORTFOLIO </p><h1>Different challenges.<br /><span class="accent">Practical solutions.</span></h1><p class="hero-lede">A selection of practical work for real people with real businesses, from custom e-commerce experiences to website refreshes and connected business systems.</p></section>
+  <section class="section-wrap section-block portfolio-intro"><p>My work spans Shopify, WordPress, SquareSpace, Webflow, custom product experiences, catalog organization, and integrations. The common thread is understanding how a business works and building a practical solution around its needs.</p></section>
   <section class="section-wrap portfolio-grid">
     {projects.map((project) => <ProjectCard {...project} />)}
   </section>
