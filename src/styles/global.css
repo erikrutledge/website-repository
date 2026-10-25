@@ -225,6 +225,16 @@ button {
   background: radial-gradient(ellipse at center, #2b3022 0%, #181a15 49%, #121310 78%);
 }
 
+.hero-img {
+  height: 400px;
+  width: 345px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #30322a;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at center, #2b3022 0%, #181a15 49%, #121310 78%);
+}
+
 .art-grid {
   position: absolute;
   inset: 0;
