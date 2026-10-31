@@ -6,7 +6,7 @@
 /* Dark theme colors */
   --dark-bg: #1E2019;
   --dark-panel: #394032;
-  --dark-muted: #8DAB7F;
+  --dark-muted: #F0F4E1;
   --dark-text: #F0F4E1;
   --dark-accent: #E6C960;
   --dark-accent-strong: #D4AD21;
@@ -218,7 +218,7 @@ color: light-dark(color-mix(in srgb, var(--light-muted) 78%, var(--light-soft)),
 font-size: 10px;
 }
 .hero-proof span:before {
-content: "âœ“";
+content: "→";
 color: light-dark(var(--light-accent), var(--dark-accent));
 margin-right: 7px;
 }
