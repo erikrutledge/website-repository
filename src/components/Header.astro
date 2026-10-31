@@ -15,4 +15,7 @@ const path = Astro.url.pathname;
     {links.map((link) => <a href={link.href} class:list={{ active: path === link.href || (link.href !== "/" && path.startsWith(link.href)) }}>{link.label}</a>)}
     <a class="nav-cta" href="/contact/">Start a project <span aria-hidden="true">↗</span></a>
   </nav>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+    <div id="theme-animation"></div>
+  </button>
 </header>

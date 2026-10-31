@@ -18,9 +18,17 @@ const { title = "Rutledge Digital | Web Development", description = "Web develop
     <meta name="theme-color" content="#10110f" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      const savedTheme = localStorage.getItem("theme");
+      const theme = savedTheme === "light" ? "light" : "dark";
+    
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    </script>
   </head>
   <body>
-    <Header />
+    <Header 
+    />
     <main><slot /></main>
     <Footer />
     <script>
