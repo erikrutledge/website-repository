@@ -37,7 +37,7 @@ The habit tracker has its own document and styles so it stays independent of the
 
 ## Habit tracker behavior and data
 
-The tracker supports daily completion toggles, showing/hiding habit names, history, and adding, renaming, reordering, and archiving habits. Statistics currently displays “coming soon”; it has no implemented statistics interface.
+The tracker supports daily completion toggles, showing/hiding habit names, history, and adding, renaming, reordering, and archiving habits. A first-visit tutorial walks through Settings, Today, Past at a Glance, and Insights; the header Help button reopens it anytime. The tutorial is remembered on this browser, and instructional copy lives there to keep screens concise. Icon credits appear only at the bottom of Settings. The add-habit form is hidden once eight active habits are present. The phone-width interface includes a horizontal daily scorecard, optional habit-name subtext, animated tab navigation and reordering, and all-time statistics (completion rate, perfect days, longest per-habit streak, most forgotten habit, and per-habit progress). New habits are limited to eight active entries; existing lists over eight remain intact until the visitor archives extras. Missed-day statistics exclude the current day. Motion respects the visitor's reduced-motion preference.
 
 Data stays on the visitor's current browser and origin. There is no account or cloud synchronization. Preserve the IndexedDB database `daily-scorecard`, version `1`, store `app`, and key `state` when changing persistence. The localStorage fallback uses `daily-scorecard` as well.
 
@@ -55,3 +55,11 @@ Configure these Cloudflare runtime values:
 - `CONTACT-TO-EMAIL`: inquiry recipient (configured in `wrangler.jsonc`).
 
 For local Worker development, put secrets in an ignored `.dev.vars` file. Never commit credentials. The theme animation and tracker icons are used assets; keep their files and existing attribution.
+
+## Screenshot examples
+
+Open `/habits?demo=1` to preview 56 days of example history using your current active habits (or sample habits on a fresh browser). Completion rates vary per habit and repeat consistently between reloads. Demo edits stay in memory and never replace your saved history. The tutorial does not open automatically in this mode; Help still works. Remove `?demo=1` to return to your real data.
+
+## Brand assets
+
+`src/components/Logo.astro` renders the shared header/footer lockup and hero symbol using `vector-logo-black.svg` and `vector-logo-white.svg`. Theme changes crossfade the SVG variants and update the favicon. Only the homepage header loads `rutledge-digital-elastic.webp`; it plays once, then settles into the matching static lockup. `src/scripts/logo.js` uses the source animation duration (8,099 ms). Update that duration and the `.logo-intro` alignment if replacing the animation. Reduced-motion visitors and browsers without JavaScript receive the static logo.

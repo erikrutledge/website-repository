@@ -69,21 +69,6 @@ font-size: 15px;
 font-weight: 750;
 letter-spacing: -0.04em;
 }
-.brand-mark {
-display: grid;
-place-items: center;
-width: 32px;
-height: 32px;
-border-radius: 9px;
-background: light-dark(var(--light-accent), var(--dark-accent));
-color: light-dark(var(--light-text), var(--dark-bg));
-font-size: 18px;
-font-weight: 900;
-}
-.brand-light {
-color: light-dark(var(--light-muted), var(--dark-muted));
-font-weight: 500;
-}
 .site-nav {
 display: flex;
 align-items: center;
@@ -274,16 +259,6 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 12px;
-}
-.art-symbol {
-font-size: 92px;
-line-height: 1;
-font-weight: 850;
-letter-spacing: -0.1em;
-color: light-dark(var(--light-text), var(--dark-text));
-}
-.art-symbol span {
-color: light-dark(var(--light-accent), var(--dark-accent));
 }
 .art-caption {
 font-size: 9px;
@@ -761,7 +736,6 @@ gap: 24px;
 padding: 24px;
 }
 .site-header,
-.brand-mark,
 .intro-band,
 .service-card,
 .project-card,
@@ -776,4 +750,32 @@ padding: 24px;
     border-color var(--transition-fast);
 }
 
+}
+/* Shared brand lockup: SVG variants crossfade as the site theme changes. */
+.brand-logo { position: relative; width: 190px; min-width: 190px; height: 44px; gap: 12px; }
+.logo-symbol { position: relative; display: block; flex: 0 0 34px; width: 34px; height: 34px; }
+.logo-symbol img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; transition: opacity .25s ease; }
+.logo-black { opacity: 0; }
+.logo-white { opacity: 1; }
+:root[data-theme="light"] .logo-black { opacity: 1; }
+:root[data-theme="light"] .logo-white { opacity: 0; }
+.logo-wordmark { display: flex; flex-direction: column; gap: 3px; font-size: 16px; line-height: 1; letter-spacing: -.04em; transition: opacity .2s ease; }
+.logo-wordmark > span { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .23em; }
+.logo-intro { position: absolute; pointer-events: none; width: 210px; height: 75px; max-width: none; left: -12px; top: -18.4px; opacity: 0; filter: invert(1); transition: filter .25s ease; }
+:root[data-theme="light"] .logo-intro { filter: invert(0); }
+.brand-logo.is-playing .logo-intro { opacity: 1; }
+.brand-logo.is-playing .logo-symbol, .brand-logo.is-playing .logo-wordmark { opacity: 0; }
+.art-center > .logo-symbol { width: 104px; height: 104px; flex-basis: 104px; margin-bottom: 10px; }
+.site-header { gap: 20px; }
+.site-header .brand-logo:focus-visible, .site-footer .brand-logo:focus-visible { outline: 2px solid light-dark(var(--light-accent), var(--dark-accent)); outline-offset: 6px; border-radius: 3px; }
+@media (max-width: 1000px) and (min-width: 601px) { .site-nav { gap: 16px; } .site-nav .nav-cta { display: none; } .site-header { gap: 14px; } }
+@media (max-width: 600px) { .brand-logo { width: 154px; min-width: 154px; } .site-header { gap: 12px; } .logo-wordmark { font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .logo-symbol img, .logo-wordmark, .logo-intro { transition: none; } .brand-logo.is-playing .logo-intro { display: none; } .brand-logo.is-playing .logo-symbol, .brand-logo.is-playing .logo-wordmark { opacity: 1; } }
+
+@media (max-width: 850px) {
+  .site-header { position: relative; }
+  .menu-toggle { display: block; }
+  .site-nav { display: none; position: absolute; z-index: 5; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 18px; padding: 18px; border-radius: 8px; border: 1px solid light-dark(var(--light-muted), var(--dark-panel)); background: light-dark(var(--light-panel), var(--dark-panel)); }
+  .site-nav.is-open { display: flex; }
+  .site-nav .nav-cta { display: block; text-align: center; }
 }

@@ -1,0 +1,19 @@
+---
+interface Props { animate?: boolean; artwork?: boolean; }
+const { animate = false, artwork = false } = Astro.props;
+---
+{artwork ? (
+  <span class="logo-symbol" aria-hidden="true">
+    <img class="logo-black" src="/vector-logo-black.svg" width="100" height="100" alt="" />
+    <img class="logo-white" src="/vector-logo-white.svg" width="100" height="100" alt="" />
+  </span>
+) : (
+  <a class:list={["brand", "brand-logo"]} href="/" aria-label="Rutledge Digital home" data-logo-animation={animate ? "true" : undefined}>
+    <span class="logo-symbol" aria-hidden="true">
+      <img class="logo-black" src="/vector-logo-black.svg" width="100" height="100" alt="" />
+      <img class="logo-white" src="/vector-logo-white.svg" width="100" height="100" alt="" />
+    </span>
+    <span class="logo-wordmark" aria-hidden="true">Rutledge<span>Digital</span></span>
+    {animate && <img class="logo-intro" data-src="/rutledge-digital-elastic.webp" width="1400" height="500" alt="" aria-hidden="true" />}
+  </a>
+)}

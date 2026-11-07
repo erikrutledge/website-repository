@@ -19,16 +19,27 @@ const pageTitle = "Daily Habits";
       <header class="topline">
         <div class="brand">DAILY SCORECARD</div>
         <div class="date-label" id="header-date"></div>
+        <button class="tutorial-help" id="tutorial-help" type="button" aria-label="Open app tutorial" aria-haspopup="dialog">Help</button>
       </header>
       <nav class="nav" aria-label="Main navigation">
         <button data-screen="today" aria-current="page"><img src="/check.png" alt="Today" width="32" height="32"></button>
-        <button data-screen="history"><img src="/calendar.png" alt="History" width="32" height="32"></button>
-        <button data-screen="stats"><img src="/stats.png" alt="Statistics" width="32" height="32"></button>
-        <button data-screen="setup"><img src="/cog.png" alt="Setup" width="32" height="32"></button>
+        <button data-screen="history"><img src="/calendar.png" alt="Past at a Glance" width="32" height="32"></button>
+        <button data-screen="stats"><img src="/stats.png" alt="Insights" width="32" height="32"></button>
+        <button data-screen="setup"><img src="/cog.png" alt="Settings" width="32" height="32"></button>
       </nav>
       <div id="app"></div>
-      <div class="footer-note">Special thanks to Alzam, Larea, Miftakhul Rizky, and Rendicon<br>from the Noun Project for their icon designs.</div>
+      <footer class="footer-note" id="settings-footer" hidden>Special thanks to Alzam, Larea, Miftakhul Rizky, and Rendicon<br>from the Noun Project for their icon designs.</footer>
     </main>
+    <dialog id="tutorial" class="tutorial" aria-labelledby="tutorial-title" aria-describedby="tutorial-description">
+      <div class="tutorial-top"><span class="eyebrow" id="tutorial-progress"></span><button class="tutorial-close" id="tutorial-close" type="button" aria-label="Close tutorial">×</button></div>
+      <div id="tutorial-content" aria-live="polite" aria-atomic="true">
+        <h2 id="tutorial-title"></h2>
+        <p id="tutorial-description" class="subtle"></p>
+        <img id="tutorial-image" class="tutorial-image" alt="" hidden />
+        <a id="tutorial-source" class="tutorial-source" target="_blank" rel="noopener noreferrer" hidden></a>
+      </div>
+      <div class="tutorial-actions"><button class="tutorial-back" id="tutorial-back" type="button">Back</button><button class="primary" id="tutorial-next" type="button">Next</button></div>
+    </dialog>
     <div class="toast" id="toast" role="status"></div>
     <script>
       import "../scripts/habits/app.js";

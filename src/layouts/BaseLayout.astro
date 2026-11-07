@@ -17,13 +17,15 @@ const { title = "Rutledge Digital | Web Development", description = "Web develop
     <meta name="description" content={description} />
     <meta name="theme-color" content="#10110f" />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link id="site-favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
-      const savedTheme = localStorage.getItem("theme");
+      let savedTheme;
+      try { savedTheme = localStorage.getItem("theme"); } catch {}
       const theme = savedTheme === "light" ? "light" : "dark";
     
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme;
+      document.getElementById("site-favicon").href = theme === "light" ? "/vector-logo-black.svg" : "/vector-logo-white.svg";
     </script>
   </head>
   <body>

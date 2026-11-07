@@ -1,3 +1,4 @@
+import "./logo.js";
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("#site-nav");
 
@@ -33,18 +34,28 @@ if (themeToggle && animationContainer) {
     renderer: "svg",
     loop: false,
     autoplay: false,
-    path: "/theme-dial.json"
+    path: "/theme-dial.json",
   });
 
   // Apply the correct theme to both the CSS variables and browser controls.
   function setTheme(theme) {
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
-    localStorage.setItem("theme", theme);
+    const favicon = document.getElementById("site-favicon");
+    if (favicon)
+      favicon.setAttribute(
+        "href",
+        theme === "light" ? "/vector-logo-black.svg" : "/vector-logo-white.svg",
+      );
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      /* Theme switching also works without storage. */
+    }
 
     themeToggle.setAttribute(
       "aria-label",
-      theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
     );
 
     themeToggle.setAttribute("aria-pressed", String(theme === "light"));

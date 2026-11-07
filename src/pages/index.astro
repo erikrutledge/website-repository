@@ -1,4 +1,5 @@
 ---
+import Logo from "../components/Logo.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects.js";
@@ -15,9 +16,9 @@ import { projects } from "../data/projects.js";
       </div>
       <div class="hero-proof"><span>Custom development</span><span>WordPress & Shopify</span><span>Integrations & support</span></div>
     </div>
-    <div class="hero-art" aria-label="Abstract graphic representing connected digital systems">
+    <div class="hero-art" aria-label="Rutledge Digital logo surrounded by connected orbits">
       <div class="art-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-      <div class="art-center"><span class="art-symbol">R<span>.</span></span><span class="art-caption">DESIGN · BUILD · IMPROVE</span></div>
+      <div class="art-center"><Logo artwork /><span class="art-caption">DESIGN · BUILD · IMPROVE</span></div>
       <span class="art-label label-top">01 / STRATEGY</span><span class="art-label label-bottom">02 / DEVELOPMENT</span>
     </div>
   </section>
