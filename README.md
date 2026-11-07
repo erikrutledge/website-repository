@@ -63,3 +63,9 @@ Open `/habits?demo=1` to preview 56 days of example history using your current a
 ## Brand assets
 
 `src/components/Logo.astro` renders the shared header/footer lockup and hero symbol using `vector-logo-black.svg` and `vector-logo-white.svg`. Theme changes crossfade the SVG variants and update the favicon. Only the homepage header loads `rutledge-digital-elastic.webp`; it plays once, then settles into the matching static lockup. `src/scripts/logo.js` uses the source animation duration (8,099 ms). Update that duration and the `.logo-intro` alignment if replacing the animation. Reduced-motion visitors and browsers without JavaScript receive the static logo.
+
+## iPhone Home Screen
+
+After deployment, visit `https://erikrutledge.com/habits` in Safari, tap Share, then Add to Home Screen (enable Open as Web App if offered). The tracker uses the vector brand mark rendered into padded PNG icons for iOS and a manifest scoped to `/habits`. Its start URL excludes screenshot demo parameters. If an existing shortcut keeps an old icon, remove that shortcut and add it again.
+
+Swipe left/right across noninteractive screen content to move between Today, Past at a Glance, Insights, and Settings. Vertical scrolling, form controls, browser edge gestures, and overflowing horizontal history grids keep their normal behavior. Tab buttons remain available. Home Screen installation does not add offline loading; no service worker is registered.

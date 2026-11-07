@@ -6,10 +6,16 @@ const pageTitle = "Daily Habits";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#f4f3ed" />
     <meta name="description" content="A simple daily habit scorecard." />
     <title>{pageTitle}</title>
+    <link rel="manifest" href="/habits.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/habits-icons/icon-180.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Scorecard" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -17,6 +23,9 @@ const pageTitle = "Daily Habits";
   <body>
     <main class="app-shell">
       <header class="topline">
+        <a class="home-logo" href="/" aria-label="Rutledge Digital home">
+          <img src="/vector-logo-black.svg" width="26" height="26" alt="" />
+        </a>
         <div class="brand">DAILY SCORECARD</div>
         <div class="date-label" id="header-date"></div>
         <button class="tutorial-help" id="tutorial-help" type="button" aria-label="Open app tutorial" aria-haspopup="dialog">Help</button>

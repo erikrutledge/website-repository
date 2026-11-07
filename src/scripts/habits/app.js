@@ -10,6 +10,7 @@ import {
 import { loadState, saveState } from "./storage.js";
 import { setupTutorial } from "./tutorial.js";
 import { createDemoState } from "./demo.js";
+import { SCREENS, setupSwipes } from "./swipe.js";
 
 (() => {
   const demo = new URLSearchParams(window.location.search).get("demo") === "1";
@@ -71,11 +72,7 @@ import { createDemoState } from "./demo.js";
   let screenAnimation;
   function setScreen(next) {
     const changed = next !== screen;
-    const direction =
-      ["today", "history", "stats", "setup"].indexOf(next) >=
-      ["today", "history", "stats", "setup"].indexOf(screen)
-        ? 1
-        : -1;
+    const direction = SCREENS.indexOf(next) >= SCREENS.indexOf(screen) ? 1 : -1;
     screen = next;
     document.querySelectorAll(".nav button").forEach((b) => {
       if (b.dataset.screen === screen) b.setAttribute("aria-current", "page");
@@ -83,10 +80,7 @@ import { createDemoState } from "./demo.js";
     });
     document
       .querySelector(".nav")
-      .style.setProperty(
-        "--tab",
-        String(["today", "history", "stats", "setup"].indexOf(screen)),
-      );
+      .style.setProperty("--tab", String(SCREENS.indexOf(screen)));
     screenAnimation?.cancel();
     render();
     if (changed && !reducedMotion()) {
@@ -443,6 +437,7 @@ import { createDemoState } from "./demo.js";
     if (!state.habits.length) screen = "setup";
     setScreen(screen);
     setupTutorial({ setScreen, getScreen: () => screen, autoShow: !demo });
+    setupSwipes(app, { getScreen: () => screen, setScreen });
     if (demo) notify("Example data · Your saved history is unchanged.");
   });
   // If the app is left open across midnight, prepare the new day's empty scorecard.
