@@ -13,6 +13,8 @@
   box-sizing: border-box;
 }
 html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background: var(--paper);
   color: var(--ink);
 }
@@ -401,7 +403,7 @@ h2 {
   border: 0;
   background: transparent;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 16px;
   padding: 12px 0;
 }
 .row-actions {
@@ -422,19 +424,20 @@ h2 {
   color: var(--ink);
 }
 .add-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 46px;
   gap: 8px;
   margin-top: 16px;
   width: 100%;
 }
 .add-row input {
   min-width: 0;
-  flex: 1;
+  width: 100%;
   border: 1px solid var(--line);
   background: var(--surface);
   border-radius: 999px;
   padding: 12px 16px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .add-row .primary {
   width: 46px;
@@ -782,7 +785,44 @@ h2 {
   }
 }
 
-.home-logo { position: absolute; top: 0; left: 0; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; opacity: .8; transition: opacity .2s ease; }
-.home-logo img { display: block; width: 26px; height: 26px; }
-.home-logo:hover { opacity: 1; }
-.home-logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* The logo uses the same sage palette and quiet surfaces as the tracker. */
+.home-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.home-logo-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--accent) 6%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--paper));
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.home-logo-mark::before {
+  content: "";
+  width: 19px;
+  height: 19px;
+  background: currentColor;
+  -webkit-mask: url("/vector-logo-black.svg") center / contain no-repeat;
+  mask: url("/vector-logo-black.svg") center / contain no-repeat;
+}
+.home-logo:hover .home-logo-mark {
+  background: var(--soft);
+  border-color: var(--line);
+}
+.home-logo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
