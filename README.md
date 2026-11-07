@@ -1,61 +1,57 @@
-# Rutledge Digital — Astro starter
+# Rutledge Digital
 
-A responsive multi-page starter for a small web-development business. It uses Astro for page templates, one shared layout, reusable header/footer components, a global stylesheet, and a small JavaScript file for the mobile navigation.
+Business website and a browser-local daily habit tracker, built with Astro and deployed to Cloudflare Workers. The contact endpoint verifies Cloudflare Turnstile and sends inquiries through Resend.
 
-## Files to edit most often
+## Development
 
-- `src/pages/index.astro` — homepage sections and copy
-- `src/pages/services.astro` — service descriptions
-- `src/pages/portfolio.astro` — replace clearly marked sample concepts with real work
-- `src/pages/contact.astro` — contact copy and form setup
-- `src/styles/global.css` — colors, typography, spacing, responsive styling
-- `src/scripts/main.js` — browser-side interactivity
-- `src/components/Header.astro` and `Footer.astro` — shared site chrome
-- `src/layouts/BaseLayout.astro` — shared HTML `<head>`, page title/description, and global imports
-- `public/` — static files such as favicon, images, downloadable assets
+Use Node.js 22 LTS or a compatible supported version.
 
-## Run locally
-
-Install Node.js LTS, clone/download this project, open a terminal in this folder, and run:
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
-Open the local URL printed in the terminal (normally `http://localhost:4321`). Astro's dev server refreshes the page as you edit.
-
-Before committing, run:
-
-```bash
+```sh
 npm run check
+npm test
 npm run build
 ```
 
-The production site is generated in `dist/`.
+`npm run preview` previews the production build. Dependencies, generated output, local secrets, and editor logs are ignored by Git.
 
-## Deploy to Cloudflare Pages through GitHub
+## Source map
 
-1. Create a new GitHub repository for this starter, or carefully copy these files into your existing repository after backing up the current version.
-2. Push/commit the project files to the branch Cloudflare Pages watches (often `main`). Keep `package.json`, `astro.config.mjs`, and `src/` at the repository root—not inside an extra nested project folder.
-3. In Cloudflare Pages, use **Framework preset: Astro**, **Build command: `npm run build`**, and **Build output directory: `dist`**. The root directory should be blank/default if the project is at repository root.
-4. Save and deploy. Every push to the production branch should trigger a new build. Check the deployment build log if it fails.
-5. Keep the existing custom domain/DNS settings if this is replacing a live site; verify the deployment preview first so you don't accidentally take down the current site.
+- `src/pages/`: business pages, `/habits`, and the `/api/contact` endpoint.
+- `src/layouts/BaseLayout.astro`: business site's document, metadata, and shared header/footer.
+- `src/components/`: reusable site components.
+- `src/data/projects.js`: portfolio content.
+- `src/styles/global.css`: business site styles; `habits.css`: isolated tracker styles.
+- `src/scripts/main.js`: mobile navigation and animated theme switch.
+- `src/scripts/habits/app.js`: tracker screens and interaction handlers.
+- `src/scripts/habits/model.js`: date handling, active habit ordering, and daily snapshots.
+- `src/scripts/habits/storage.js`: IndexedDB persistence with localStorage fallback.
+- `public/`: assets served unchanged. Browser scripts belong in `src/` so Astro can bundle imports.
+- `tests/`: habit data regression tests, using Node's built-in test runner.
 
-Astro static output does not need a Cloudflare server adapter for this starter. If you later add server-rendered pages, functions, a database, or server-side secrets, revisit the deployment architecture.
+The habit tracker has its own document and styles so it stays independent of the business site's navigation and themes. Keep new tracker logic in its existing modules; add components or modules when there is a clear responsibility to separate.
 
-## Important before launch
+## Habit tracker behavior and data
 
-- In `src/pages/contact.astro`, replace `hello@example.com` with the actual business email. The `mailto:` form is only a simple starter: it opens the visitor's email app and is not a reliable hosted form backend. Test it or replace it with a reputable form provider/server endpoint before launch.
-- Replace portfolio placeholders with genuine work and get client permission before publishing client materials or metrics.
-- Add your actual domain to `site` in `astro.config.mjs` if you want to generate canonical URLs reliably. Example: `site: 'https://www.example.com'`.
-- Check all links, keyboard navigation, mobile layout, metadata, favicon, privacy disclosures, and contact details before launch.
-- Don't commit API keys, passwords, `.env` files, client credentials, or private customer data.
+The tracker supports daily completion toggles, showing/hiding habit names, history, and adding, renaming, reordering, and archiving habits. Statistics currently displays “coming soon”; it has no implemented statistics interface.
 
-## Git workflow best practices
+Data stays on the visitor's current browser and origin. There is no account or cloud synchronization. Preserve the IndexedDB database `daily-scorecard`, version `1`, store `app`, and key `state` when changing persistence. The localStorage fallback uses `daily-scorecard` as well.
 
-- Make a branch for substantial changes (for example, `feature/contact-page`) and open a pull request when ready.
-- Make small commits with clear messages (`Add service page`, `Fix mobile navigation`).
-- Preview locally and run `npm run check` and `npm run build` before merging.
-- Let Cloudflare deploy from GitHub. Avoid manually editing generated output or build artifacts.
-- Keep the project source in GitHub as the source of truth. Cloudflare's deployment/editor experience is not a substitute for a normal source-code workflow.
+The saved state contains `habits` (including archived entries) and a `days` map keyed by local `YYYY-MM-DD` dates. Each day stores a snapshot of habit IDs/names and completed IDs. Setup edits update today's snapshot; past records remain intact. Missed days are backfilled with the last recorded habit list. Refocusing the page prepares a new day after midnight. Do not replace this format without a migration.
+
+## Deployment and contact configuration
+
+`astro.config.mjs` uses server output and the Cloudflare adapter because `/api/contact` runs on the server. `wrangler.jsonc` defines the Worker entry point and static assets in `dist/`. Retain the existing Cloudflare deployment and domain configuration; deploy the generated Worker and assets together, rather than treating this as a static-only site.
+
+Configure these Cloudflare runtime values:
+
+- `RESEND-API-KEY`: secret for email delivery.
+- `TURNSTILE-SECRET-KEY`: secret matching the public widget site key in `src/pages/contact.astro`.
+- `CONTACT-FROM-EMAIL`: verified sender address (configured in `wrangler.jsonc`).
+- `CONTACT-TO-EMAIL`: inquiry recipient (configured in `wrangler.jsonc`).
+
+For local Worker development, put secrets in an ignored `.dev.vars` file. Never commit credentials. The theme animation and tracker icons are used assets; keep their files and existing attribution.

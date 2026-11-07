@@ -7,15 +7,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "node --test"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.6.13",
     "astro": "^5.0.0",
     "lottie-web": "^5.13.0",
-    "sortable": "^2.0.0",
-    "sortablejs": "^1.15.7",
     "typescript": "^5.7.0"
   }
 }
