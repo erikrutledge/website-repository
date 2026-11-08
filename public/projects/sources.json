@@ -1,0 +1,60 @@
+{
+  "happyklips": {
+    "logo": {
+      "path": "/projects/happyklips-logo.png",
+      "source": "https://www.happyklips.com/cdn/shop/files/SMALL_DARK_BACKGROUND.png?v=1753129547&width=400"
+    },
+    "visual": {
+      "path": "/projects/happyklips-visual.webp",
+      "source": "https://cdn.shopify.com/s/files/1/0923/0581/7879/files/new-collage.png?v=1762794693"
+    }
+  },
+  "aniron": {
+    "logo": {
+      "path": "/projects/aniron-logo.webp",
+      "source": "https://anironfmip.com/wp-content/uploads/2023/01/Aniron-White-WebPg-Logo-Convertion-scaled-e1776450142543-913x1024.webp"
+    },
+    "visual": {
+      "path": "/projects/aniron-visual.jpg",
+      "source": "https://anironfmip.com/wp-content/uploads/2026/01/Aniron-209-Fav-683x1024.jpg"
+    }
+  },
+  "hathaus": {
+    "logo": {
+      "path": "/projects/hathaus-logo.png",
+      "source": "https://www.hathausco.com/cdn/shop/files/The_Hat_Haus_Logo_01.png?v=1715501326&width=400"
+    },
+    "visual": {
+      "path": "/projects/hathaus-visual.jpg",
+      "source": "https://www.hathausco.com/cdn/shop/files/DSC05105.jpg?v=1731004142&width=1000"
+    }
+  },
+  "blaque": {
+    "logo": {
+      "path": "/projects/blaque-logo.png",
+      "source": "https://blaquediamond.com/cdn/shop/files/blaque-diamond-wheels-logo.webp?height=54&v=1784651347"
+    },
+    "visual": {
+      "path": "/projects/blaque-visual.jpg",
+      "source": "https://blaquediamond.com/cdn/shop/files/2018-audi-r8-bdf20-brushed-silver-high-res16_31bdfc82-b440-4581-a1b8-bc4cf0f3cc5c.jpg?v=1788527394&width=1000"
+    }
+  },
+  "gretas": {
+    "logo": {
+      "path": "/projects/gretas-logo.webp",
+      "source": "https://gretasguns.com/wp-content/uploads/2023/04/Gretas-Guns-Simi-Valley-CA-Logo.webp"
+    }
+  },
+  "pearagon": {
+    "logo": {
+      "path": "/projects/pearagon-logo.png",
+      "source": "https://www.pearagon.com/hubfs/MKT%202024/Brand%20Logos/Text%20and%20Logo/Copy%20of%20Pearagon%20Primary%20Logo%20White%20+%20Gradient@4x.png"
+    }
+  },
+  "varsa": {
+    "logo": {
+      "path": "/projects/varsa-logo.webp",
+      "source": "https://images.squarespace-cdn.com/content/v1/67f081756c5a8838cc82daa0/714492ed-05fe-467f-ae07-50210feda2bd/Logo.png?format=500w"
+    }
+  }
+}

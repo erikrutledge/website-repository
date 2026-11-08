@@ -1,0 +1,16 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { projects } from "../data/projects.js";
+interface Props { id: string; label?: string; }
+const { id, label = "Portfolio projects" } = Astro.props;
+---
+<project-carousel class="project-carousel" role="region" aria-roledescription="carousel" aria-label={label}>
+  <button class="carousel-arrow carousel-previous" type="button" data-previous aria-label="Previous projects" aria-controls={id} hidden>←</button>
+  <div class="carousel-track" id={id} tabindex="0" aria-label="Projects — scroll horizontally to explore">
+    {projects.map((project, index) => <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${projects.length}`}><ProjectCard {...project} /></div>)}
+  </div>
+  <button class="carousel-arrow carousel-next" type="button" data-next aria-label="Next projects" aria-controls={id} hidden>→</button>
+</project-carousel>
+<script>
+  import "../scripts/project-carousel.js";
+</script>

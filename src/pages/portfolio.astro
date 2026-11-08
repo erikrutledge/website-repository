@@ -1,13 +1,14 @@
 ---
+import PlatformExperience from "../components/PlatformExperience.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import { projects } from "../data/projects.js";
+import ProjectCarousel from "../components/ProjectCarousel.astro";
 ---
-<BaseLayout title="Portfolio | Rutledge Digital" description="Selected website, e-commerce, and business systems projects by Erik Rutledge.">
-  <section class="page-hero section-wrap"><p class="eyebrow">PORTFOLIO </p><h1>Different challenges.<br /><span class="accent">Practical solutions.</span></h1><p class="hero-lede">A selection of practical work for real people with real businesses, from custom e-commerce experiences to website refreshes and connected business systems.</p></section>
-  <section class="section-wrap section-block portfolio-intro"><p>My work spans Shopify, WordPress, SquareSpace, Webflow, custom product experiences, catalog organization, and integrations. The common thread is understanding how a business works and building a practical solution around its needs.</p></section>
-  <section class="section-wrap portfolio-grid">
-    {projects.map((project) => <ProjectCard {...project} />)}
+<BaseLayout title="Portfolio | Rutledge Digital" description="The businesses and people Erik Rutledge has worked with, and the platforms and technologies behind the work.">
+  <section class="page-hero section-wrap portfolio-businesses" aria-labelledby="businesses-heading">
+    <p class="eyebrow">PORTFOLIO · BUSINESSES & PEOPLE</p>
+    <h1 id="businesses-heading">Real businesses.<br /><span class="accent">Personal partnerships.</span></h1>
+    <p class="hero-lede">Whether you own a custom print shop on Shopify, a holistic healthcare practice, or anything in between, my work starts with the people behind the business and ends with a solution to their problems.</p>
+    <ProjectCarousel id="portfolio-projects" label="Businesses and people I’ve worked with" />
   </section>
-  <section class="section-wrap note-panel"><p class="eyebrow">HAVE A PROJECT IN MIND?</p><h2>Let’s build something useful.</h2><p>Tell me what your business needs and we can figure out a practical next step.</p><a class="button button-primary" href="/contact/">Start a conversation ↗</a></section>
+  <PlatformExperience portfolio />
 </BaseLayout>

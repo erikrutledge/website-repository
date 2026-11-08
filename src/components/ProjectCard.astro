@@ -1,17 +1,28 @@
 ---
 interface Props {
-  number: string;
   title: string;
   category: string;
-  description: string;
-  href: string;
-  linkLabel?: string;
+  industry: string;
+  need: string;
+  solution: string;
+  href?: string;
+  logo?: string;
+  logoLight?: boolean;
 }
-const { number, title, category, description, href, linkLabel = "Explore project" } = Astro.props;
+const { title, category, industry, need, solution, href, logo, logoLight } = Astro.props;
 ---
 <article class="project-card">
-  <div class="project-topline"><span class="project-number">{number}</span><span class="tag">{category}</span></div>
-  <h3>{title}</h3>
-  <p>{description}</p>
-  <a class="text-link" href={href} target="_blank" rel="noreferrer">{linkLabel} <span aria-hidden="true">↗</span></a>
+  <div class:list={["project-brand", { "project-brand-light": logoLight }]}>
+    {logo ? <img src={logo} alt={`${title} logo`} width="180" height="80" loading="lazy" decoding="async" /> : <span class="project-initials" aria-hidden="true">CS</span>}
+  </div>
+  <div class="project-body">
+    <p class="project-business-type">{industry}</p>
+    <h3>{title}</h3>
+    <p class="project-platform">{category}</p>
+    <dl class="project-story">
+      <div><dt>The need</dt><dd>{need}</dd></div>
+      <div><dt>My solution</dt><dd>{solution}</dd></div>
+    </dl>
+    {href ? <a class="text-link" href={href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${title} website`}>Visit website <span aria-hidden="true">↗</span></a> : <span class="project-unavailable">Project archive · Website unavailable</span>}
+  </div>
 </article>

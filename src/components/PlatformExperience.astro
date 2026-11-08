@@ -1,0 +1,17 @@
+---
+interface Props { portfolio?: boolean; }
+const { portfolio = false } = Astro.props;
+const platforms = [
+  { name: "Shopify", mark: "S", color: "#95bf47", type: "COMMERCE", description: "Storefronts, theme customization, product builders, catalog imports, and point-of-sale workflows.", example: "Happy Klips · The Hat Haus · CrossroadsSales" },
+  { name: "WordPress", mark: "W", color: "#6ab5d5", type: "WEBSITES & CONTENT", description: "Website refreshes, Elementor builds, interactive landing pages, maintenance, and data connections.", example: "Aniron Wellness · Blaque Diamond · Greta’s Guns" },
+  { name: "Squarespace", mark: "Sq", color: "#e8e4db", type: "BUSINESS WEBSITES", description: "Website setup, layout and content updates, custom styling, and connections to business tools.", example: "Varsa Studios · Studio rental page redesign" },
+  { name: "Webflow", mark: "Wf", color: "#79a0ff", type: "DESIGN & DEVELOPMENT", description: "Responsive marketing websites, visual development, custom features, and integration support." },
+  { name: "HubSpot", mark: "H", color: "#ff9577", type: "CRM & AUTOMATION", description: "API integrations and data synchronization that connect your CRM with the tools your team uses.", example: "Pearagon internship · HubSpot + PracticePanther" },
+  { name: "Beyond the platform", mark: "↔", color: "#e6c960", type: "CUSTOM CONNECTIONS", description: "PracticePanther, APIs, JSON imports, inventory feeds, and custom code to bridge gaps between systems.", example: "Business workflows shaped around your needs" },
+];
+---
+<section class="platform-section section-wrap section-block" aria-labelledby="platform-heading">
+  <div class="section-heading"><div><p class="eyebrow">{portfolio ? "PLATFORMS & TECHNOLOGIES" : "PLATFORMS & INTEGRATIONS"}</p><h2 id="platform-heading">{portfolio ? "Platforms &" : "Your tools."}<br /><span class="accent">{portfolio ? "technologies I’ve used." : "Working together."}</span></h2></div><p class="platform-intro">Experience across the platforms small businesses rely on—from the website customers see to the systems behind it.</p></div>
+  <div class="platform-grid">{platforms.map(platform => <article class="platform-card"><div class="platform-title"><span class="platform-mark" style={`--platform-color: ${platform.color}`} aria-hidden="true">{platform.mark}</span><div><p class="eyebrow">{platform.type}</p><h3>{platform.name}</h3></div></div><p>{platform.description}</p>{platform.example && <p class="platform-example">{platform.example}</p>}</article>)}</div>
+  <p class="platform-footnote">Website builds & refreshes <span aria-hidden="true">/</span> E-commerce & product experiences <span aria-hidden="true">/</span> APIs & connected workflows</p>
+</section>
