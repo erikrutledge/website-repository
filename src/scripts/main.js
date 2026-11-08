@@ -1,3 +1,4 @@
+import "./interactions.js";
 import "./logo.js";
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("#site-nav");

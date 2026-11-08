@@ -17,7 +17,7 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
       <div class="hero-proof"><span>Custom development</span><span>WordPress & Shopify</span><span>Integrations & support</span></div>
     </div>
     <div class="hero-art" aria-label="Rutledge Digital logo surrounded by connected orbits">
-      <div class="art-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <div class="art-grid" aria-hidden="true"><canvas class="art-grid-canvas"></canvas></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
       <div class="art-center"><Logo artwork /><span class="art-caption">DESIGN · BUILD · IMPROVE</span></div>
       <span class="art-label label-top">01 / STRATEGY</span><span class="art-label label-bottom">02 / DEVELOPMENT</span>
     </div>
@@ -45,3 +45,6 @@ import ProjectCarousel from "../components/ProjectCarousel.astro";
 
   <section class="cta-band"><div class="section-wrap cta-content"><p class="eyebrow">HAVE SOMETHING IN MIND?</p><h2>Let's make your website<br /><span class="accent">exactly how you need it.</span></h2><a class="button button-primary" href="/contact/">Tell me what you're building <span aria-hidden="true">↗</span></a></div></section>
 </BaseLayout>
+<script>
+  import "../scripts/hero-art.js";
+</script>

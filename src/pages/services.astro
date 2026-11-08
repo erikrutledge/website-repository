@@ -1,16 +1,118 @@
 ---
-import PlatformExperience from "../components/PlatformExperience.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+const packages = [
+  {
+    name: "20-Minute Fit Check",
+    startingPrice: 0,
+    fit: "Start with a conversation",
+    description: "A free call to talk through your business, your website, and whether we’re a good fit to work together.",
+    price: "Free",
+    priceLabel: "20-minute call",
+    includes: [
+      "Talk through your goals and current website needs",
+      "Discuss the right package or a practical next step",
+      "Ask questions about scope, timing, and budget",
+    ],
+    note: "No commitment required. Detailed site reviews and written recommendations are available through the Website Roadmap.",
+    cta: "Request a free fit check",
+  },
+  {
+    name: "Custom Website",
+    startingPrice: 3000,
+    fit: "A complete business website",
+    description: "Designed and coded around your business, with managed hosting and ongoing care after launch.",
+    price: "$3,000",
+    priceLabel: "setup + $99/month care",
+    includes: [
+      "Up to 5 pages, one design direction, and mobile layouts",
+      "Contact form and basic search setup",
+      "Domain & DNS setup, deployment, and managed hosting",
+      "Two revision rounds, launch testing, and handoff walkthrough",
+    ],
+    note: "Typically 4–6 weeks after receiving your content. Includes the first year of a standard domain up to $25, registered in your name; renewal costs disclosed before registration.",
+    scope: "For informational business sites. Stores, booking, memberships, accounts, and substantial integrations are quoted separately.",
+    cta: "Discuss a custom website",
+  },
+  {
+    name: "Platform Launch",
+    startingPrice: 1800,
+    fit: "A site you can manage yourself",
+    description: "A branded website or storefront on WordPress, Squarespace, Shopify, or another agreed platform.",
+    price: "From $1,800",
+    priceLabel: "business websites · stores from $2,500",
+    includes: [
+      "Platform recommendation, account setup, and theme customization",
+      "Up to 5 pages with your branding, navigation, and mobile layouts",
+      "Contact form, basic search setup, and two revision rounds",
+      "Recorded training for everyday updates",
+    ],
+    note: "Store starting scope: up to 10 straightforward products, one payment provider, and standard shipping setup.",
+    scope: "Platform subscriptions, themes, apps, transaction fees, and domains are paid directly by you. Original custom themes are quoted separately.",
+    cta: "Plan a platform launch",
+  },
+  {
+    name: "Custom Features",
+    startingPrice: 600,
+    fit: "Make your existing website do more",
+    description: "A focused addition: a product selector, animation, integration, custom plugin, or workflow.",
+    price: "From $600",
+    priceLabel: "per project · quoted after a site review",
+    includes: [
+      "One defined feature with written acceptance criteria",
+      "Platform compatibility review and implementation",
+      "Testing in an agreed environment and one review round",
+      "Installation, documentation, and handoff",
+      "30 days to correct defects against the agreed scope",
+    ],
+    note: "Uncertain integration? A technical assessment from $250 provides a feasibility recommendation and implementation scope before a build quote.",
+    examples: "Examples: The Hat Haus hat designer and Happy Klips inventory logic.",
+    cta: "Talk through a feature",
+  },
+  {
+    name: "Website Roadmap",
+    startingPrice: 350,
+    fit: "Know what to tackle next",
+    description: "A practical review to help you decide what to fix, keep, replace, or build next.",
+    price: "$350",
+    priceLabel: "one-time review",
+    includes: [
+      "Questionnaire about your goals and current frustrations",
+      "Review of up to 5 key pages, mobile usability, navigation, and calls to action",
+      "Check of obvious technical issues, your platform, and recurring tools",
+      "Short report with priorities and rough implementation budgets",
+      "45-minute walkthrough of recommendations",
+    ],
+    scope: "Deeper SEO, security, and accessibility audits are scoped separately.",
+    cta: "Request a website roadmap",
+  },
+].sort((a, b) => a.startingPrice - b.startingPrice);
 ---
-<BaseLayout title="Services | Rutledge Digital" description="Website development, e-commerce, integrations, and maintenance services.">
-  <section class="page-hero section-wrap"><p class="eyebrow">SERVICES</p><h1>Website trouble?<br /><span class="accent">I can help.</span></h1><p class="hero-lede">Whether you need a new site, a better online store, or help fixing a system that's grown complicated, let's find a practical path forward.</p></section>
-  <section class="section-wrap service-list">
-    <article class="service-row"><span class="service-index">01</span><div><h2>Website design & development</h2><p>Custom-coded and platform-based websites for local businesses and growing brands. Clear structure, mobile-friendly layouts, accessible content, and performance-conscious implementation.</p><ul><li>New business and marketing websites</li><li>Landing pages and redesigns</li><li>Responsive layouts and performance improvements</li></ul></div><span class="service-icon">↗</span></article>
-    <article class="service-row"><span class="service-index">02</span><div><h2>E-commerce & custom features</h2><p>Online shopping experiences that make product discovery and customization simpler. Work can be built into an existing platform or scoped as a custom feature.</p><ul><li>Shopify storefront and theme customization</li><li>WordPress and WooCommerce improvements</li><li>Interactive product selectors and custom workflows</li></ul></div><span class="service-icon">◈</span></article>
-    <article class="service-row"><span class="service-index">03</span><div><h2>Integrations & automation</h2><p>Connect systems that don't communicate well, reduce repetitive work, and help information flow reliably between tools.</p><ul><li>API integrations and data synchronization</li><li>Scheduled scripts and workflow automation</li><li>Debugging and legacy system troubleshooting</li></ul></div><span class="service-icon">⟳</span></article>
-    <article class="service-row"><span class="service-index">04</span><div><h2>Maintenance & ongoing support</h2><p>Keep an existing website healthier with agreed-upon updates, fixes, and improvements. Every engagement is scoped clearly so expectations are understood.</p><ul><li>Content and layout updates</li><li>Bug fixes and technical troubleshooting</li><li>Maintenance plans with defined response times and limits</li></ul></div><span class="service-icon">⌘</span></article>
+<BaseLayout title="Services & Pricing | Rutledge Digital" description="Start with a free 20-minute fit check. Explore a $350 website roadmap, custom features from $600, platform launches from $1,800, and custom websites with ongoing care.">
+  <section class="page-hero section-wrap">
+    <p class="eyebrow">SERVICES & PRICING</p>
+    <h1>A clear starting point.<br /><span class="accent">A practical next step.</span></h1>
+    <p class="hero-lede">Launch a website, improve what you have, or figure out what comes next. Choose a starting package, then reach out to talk through your business and the details.</p>
   </section>
-  <PlatformExperience />
-
-  <section class="section-wrap note-panel"><p class="eyebrow">A CLEAR PROCESS</p><h2>Start with the problem, not the platform.</h2><p>We'll clarify what the site needs to do, who will maintain it, what integrations are required, and what budget makes sense before choosing the technology.</p><a class="button button-primary" href="/contact/">Discuss a project ↗</a></section>
+  <section class="section-wrap package-grid" aria-label="Website service packages">
+    {packages.map((service, index) => (
+      <article class="package-card" aria-labelledby={`package-${index}`}>
+        <p class="eyebrow">{service.fit}</p>
+        <h2 id={`package-${index}`}>{service.name}</h2>
+        <p class="package-description">{service.description}</p>
+        <div class="package-pricing"><p class="package-price">{service.price}</p><p class="package-price-label">{service.priceLabel}</p></div>
+        <h3>What’s included</h3>
+        <ul>{service.includes.map(item => <li>{item}</li>)}</ul>
+        {service.note && <p class="package-note">{service.note}</p>}
+        {service.scope && <p class="package-scope">{service.scope}</p>}
+        {service.examples && <a class="package-example text-link" href="/portfolio/">{service.examples} <span aria-hidden="true">↗</span></a>}
+        <a class="button button-primary package-cta" href="/contact/">{service.cta} <span aria-hidden="true">↗</span></a>
+      </article>
+    ))}
+  </section>
+  <section class="section-wrap note-panel">
+    <p class="eyebrow">LET’S FIND THE RIGHT FIT</p>
+    <h2>Have a question about a package?</h2>
+    <p>Tell me what you’re working on. We’ll discuss the scope, costs, and next steps before you commit.</p>
+    <a class="text-link" href="/contact/">Get in touch <span aria-hidden="true">↗</span></a>
+  </section>
 </BaseLayout>

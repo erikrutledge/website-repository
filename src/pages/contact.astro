@@ -2,13 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Contact | Rutledge Digital" description="Start a conversation about your website project with Rutledge Digital.">
-  <section class="page-hero section-wrap">
-    <p class="eyebrow">Contact</p>
-    <h1>Let's talk about<br /><span class="accent">what comes next.</span></h1>
-    <p class="hero-lede">Tell me a little about your business and what you'd like your website to do. I'll follow up to discuss goals, options, and next steps.</p>
-  </section>
-  <section class="section-wrap contact-grid">
+  <section class="section-wrap contact-grid contact-page-grid" aria-labelledby="contact-heading">
     <div class="contact-copy">
+      <div class="page-hero contact-heading">
+        <p class="eyebrow">Contact</p>
+        <h1 id="contact-heading">Let's talk about<br /><span class="accent">what comes next.</span></h1>
+        <p class="hero-lede">Tell me a little about your business and what you'd like your website to do. I'll follow up to discuss goals, options, and next steps.</p>
+      </div>
       <p class="eyebrow">Start a conversation</p>
       <h2>Good projects start<br />with a clear brief.</h2>
       <p>Share as much or as little as you know right now. You don't need a finished plan to get started.</p>
@@ -16,14 +16,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="contact-symbol" aria-hidden="true">↗</span>
         <div>
           <b>Email</b>
-          <p>websites@erikrutledge.com</p>
+          <p><a href="mailto:websites@erikrutledge.com">websites@erikrutledge.com</a></p>
         </div>
       </div>
       <div class="contact-detail">
         <span class="contact-symbol" aria-hidden="true">◎</span>
         <div>
           <b>What happens next?</b>
-          <p>We'll talk through your goals, timing, budget, and what a sensible first step looks like.</p>
+          <p>Fill out the form or send me an email, and I’ll get back to you within a week to make a plan together.</p>
         </div>
       </div>
     </div>
@@ -34,13 +34,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required />
       <label for="company">Business or website (optional)</label>
       <input id="company" name="company" type="text" autocomplete="url" maxlength="160" />
-      <label for="service">What do you need help with?</label>
+      <div class="contact-service-label">
+        <label for="service">What do you need help with?</label>
+        <a class="package-help" href="/services/" target="_blank" rel="noopener noreferrer" aria-label="Learn about the packages on the services page (opens in a new tab)" title="Compare packages on the services page (opens in a new tab)">?</a>
+      </div>
       <select id="service" name="service">
-        <option value="New Website">New website</option>
-        <option value="Redesign">Redesign</option>
-        <option value="Maintain and Update">Maintenance and updates</option>
-        <option value="E-Commerce">E-commerce</option>
-        <option value="Other">Not sure yet</option>
+        <option value="20-Minute Fit Check">20-Minute Fit Check</option>
+        <option value="Website Roadmap">Website Roadmap</option>
+        <option value="Custom Features">Custom Features</option>
+        <option value="Platform Launch">Platform Launch</option>
+        <option value="Custom Website">Custom Website</option>
       </select>
       <label for="message">Tell me about your project</label>
       <textarea id="message" name="message" rows="5" maxlength="1500" required></textarea>
