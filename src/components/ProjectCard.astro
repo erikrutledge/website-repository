@@ -7,12 +7,11 @@ interface Props {
   solution: string;
   href?: string;
   logo?: string;
-  logoLight?: boolean;
 }
-const { title, category, industry, need, solution, href, logo, logoLight } = Astro.props;
+const { title, category, industry, need, solution, href, logo } = Astro.props;
 ---
 <article class="project-card">
-  <div class:list={["project-brand", { "project-brand-light": logoLight }]}>
+  <div class:list={["project-brand", { "project-brand-light": logo }]}>
     {logo ? <img src={logo} alt={`${title} logo`} width="180" height="80" loading="lazy" decoding="async" /> : <span class="project-initials" aria-hidden="true">CS</span>}
   </div>
   <div class="project-body">
