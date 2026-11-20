@@ -217,8 +217,7 @@ border-radius: 12px;
 background: radial-gradient(ellipse at center, light-dark(color-mix(in srgb, var(--light-soft) 28%, var(--light-bg)), color-mix(in srgb, var(--dark-muted) 24%, var(--dark-bg))) 0%, light-dark(color-mix(in srgb, var(--light-muted) 9%, var(--light-bg)), var(--dark-panel)) 49%, light-dark(var(--light-bg), var(--dark-bg)) 78%);
 }
 .hero-img {
-height: 500px;
-width: 370px;
+width: min(100%, 370px);
 position: relative;
 overflow: hidden;
 border: 1px solid light-dark(color-mix(in srgb, var(--light-muted) 22%, var(--light-bg)), color-mix(in srgb, var(--dark-muted) 30%, var(--dark-bg)));
@@ -910,8 +909,6 @@ a:focus-visible { outline: 2px solid light-dark(var(--light-accent), var(--dark-
 .story-note blockquote p { margin: 0; max-width: none; font-size: clamp(21px, 2.6vw, 30px); line-height: 1.55; letter-spacing: -.025em; color: light-dark(var(--light-text), var(--dark-text)); }
 @media (max-width: 700px) { .story-layout { grid-template-columns: 1fr; gap: 28px; } .story-heading h2 br { display: none; } .story-heading h2 .accent::before { content: " "; } .story-copy { font-size: 14px; line-height: 1.9; } .story-note { margin-top: 32px; } }
 
-/* Portrait layers reuse the hero grid, with readable labels over the photograph. */
-.hero-img { max-width: 100%; isolation: isolate; }
-.hero-img > .art-grid { z-index: 0; }
-.hero-img > img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
-.hero-img .art-label { z-index: 2; color: #f0f4e1; font-weight: 700; text-shadow: 0 1px 2px #000, 0 2px 8px rgb(0 0 0 / 90%), 0 0 16px rgb(0 0 0 / 70%); }
+/* Keep the portrait labels readable over the photograph. */
+.hero-img > img { display: block; width: 100%; height: auto; }
+.hero-img .art-label { color: #f0f4e1; font-weight: 700; text-shadow: 0 1px 2px #000, 0 2px 8px rgb(0 0 0 / 90%), 0 0 16px rgb(0 0 0 / 70%); }

@@ -45,7 +45,7 @@ The saved state contains `habits` (including archived entries) and a `days` map 
 
 ## Deployment and contact configuration
 
-`astro.config.mjs` uses server output and the Cloudflare adapter because `/api/contact` runs on the server. `wrangler.jsonc` defines the Worker entry point and static assets in `dist/`. Retain the existing Cloudflare deployment and domain configuration; deploy the generated Worker and assets together, rather than treating this as a static-only site.
+`astro.config.mjs` uses server output and the Cloudflare adapter because `/api/contact` runs on the server. `wrangler.jsonc` points to the adapter's Worker entry point. The production build generates the deployment configuration for the bundled Worker and static assets in `dist/`.
 
 Configure these Cloudflare runtime values:
 

@@ -1,6 +1,6 @@
 {
     "name": "website-repository",
-    "main": "./dist/_worker.js/index.js",
+    "main": "@astrojs/cloudflare/entrypoints/server",
     "compatibility_date": "2026-10-24",
     "compatibility_flags": [
       "nodejs_compat",
@@ -11,8 +11,7 @@
       "CONTACT-TO-EMAIL": "erik.rutledge14@gmail.com"
     },
     "assets": {
-      "binding": "ASSETS",
-      "directory": "./dist"
+      "binding": "ASSETS"
     },
     "observability": {
       "enabled": true
